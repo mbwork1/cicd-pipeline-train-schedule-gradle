@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        SERVER_CREDENTIALS = credentials('webserver_login')
+    }    
     stages {
         stage('Build') {
             steps {
@@ -21,8 +24,8 @@ pipeline {
                             sshPublisherDesc(
                                 configName: 'staging',
                                 sshCredentials: [
-                                    username: sh 'echo $USERNAME',
-                                    encryptedPassphrase: sh 'echo $USERPASS'
+                                    username: '$USERNAME',
+                                    encryptedPassphrase: '$USERPASS'
                                 ], 
                                 transfers: [
                                     sshTransfer(
