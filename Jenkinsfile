@@ -21,8 +21,8 @@ pipeline {
                             sshPublisherDesc(
                                 configName: 'staging',
                                 sshCredentials: [
-                                    username: '$USERNAME',
-                                    encryptedPassphrase: '$USERPASS'
+                                    username: sh 'echo $USERNAME',
+                                    encryptedPassphrase: sh 'echo $USERPASS'
                                 ], 
                                 transfers: [
                                     sshTransfer(
@@ -53,8 +53,8 @@ pipeline {
                             sshPublisherDesc(
                                 configName: 'remote',
                                 sshCredentials: [
-                                    username: '$USERNAME',
-                                    encryptedPassphrase: '$USERPASS'
+                                    username: sh 'echo $USERNAME',
+                                    encryptedPassphrase: sh 'echo $USERPASS'
                                 ], 
                                 transfers: [
                                     sshTransfer(
