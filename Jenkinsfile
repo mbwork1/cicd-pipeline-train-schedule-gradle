@@ -56,8 +56,8 @@ pipeline {
                             sshPublisherDesc(
                                 configName: 'remote',
                                 sshCredentials: [
-                                    username: sh 'echo $USERNAME',
-                                    encryptedPassphrase: sh 'echo $USERPASS'
+                                    username: '$USERNAME',
+                                    encryptedPassphrase: '$USERPASS'
                                 ], 
                                 transfers: [
                                     sshTransfer(
